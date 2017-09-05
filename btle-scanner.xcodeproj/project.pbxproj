@@ -1,0 +1,532 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63A58C2D1F5E2CE100B4AA1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A58C2C1F5E2CE100B4AA1A /* AppDelegate.swift */; };
+		63A58C311F5E2CE100B4AA1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A58C301F5E2CE100B4AA1A /* Assets.xcassets */; };
+		63A58C341F5E2CE100B4AA1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63A58C321F5E2CE100B4AA1A /* Main.storyboard */; };
+		63A58C3F1F5E2CE100B4AA1A /* btle_scannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A58C3E1F5E2CE100B4AA1A /* btle_scannerTests.swift */; };
+		63A58C4A1F5E2CE100B4AA1A /* btle_scannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A58C491F5E2CE100B4AA1A /* btle_scannerUITests.swift */; };
+		63A9705C1F5E2D830049CFD9 /* BluetoothLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */; };
+		63A9705D1F5E2D830049CFD9 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */; };
+		63A9705E1F5E2D830049CFD9 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63A58C3B1F5E2CE100B4AA1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63A58C211F5E2CE100B4AA1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63A58C281F5E2CE100B4AA1A;
+			remoteInfo = "btle-scanner";
+		};
+		63A58C461F5E2CE100B4AA1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63A58C211F5E2CE100B4AA1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63A58C281F5E2CE100B4AA1A;
+			remoteInfo = "btle-scanner";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63A58C291F5E2CE100B4AA1A /* btle-scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "btle-scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A58C2C1F5E2CE100B4AA1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63A58C301F5E2CE100B4AA1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63A58C331F5E2CE100B4AA1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63A58C351F5E2CE100B4AA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63A58C3A1F5E2CE100B4AA1A /* btle-scannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btle-scannerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A58C3E1F5E2CE100B4AA1A /* btle_scannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btle_scannerTests.swift; sourceTree = "<group>"; };
+		63A58C401F5E2CE100B4AA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63A58C451F5E2CE100B4AA1A /* btle-scannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btle-scannerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A58C491F5E2CE100B4AA1A /* btle_scannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btle_scannerUITests.swift; sourceTree = "<group>"; };
+		63A58C4B1F5E2CE100B4AA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothLEManager.swift; path = "btle-scanner/BluetoothLEManager.swift"; sourceTree = "<group>"; };
+		63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeripheralViewController.swift; path = "btle-scanner/PeripheralViewController.swift"; sourceTree = "<group>"; };
+		63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanViewController.swift; path = "btle-scanner/ScanViewController.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63A58C261F5E2CE100B4AA1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A58C371F5E2CE100B4AA1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A58C421F5E2CE100B4AA1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63A58C201F5E2CE100B4AA1A = {
+			isa = PBXGroup;
+			children = (
+				63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */,
+				63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */,
+				63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */,
+				63A58C2B1F5E2CE100B4AA1A /* btle-scanner */,
+				63A58C3D1F5E2CE100B4AA1A /* btle-scannerTests */,
+				63A58C481F5E2CE100B4AA1A /* btle-scannerUITests */,
+				63A58C2A1F5E2CE100B4AA1A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63A58C2A1F5E2CE100B4AA1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63A58C291F5E2CE100B4AA1A /* btle-scanner.app */,
+				63A58C3A1F5E2CE100B4AA1A /* btle-scannerTests.xctest */,
+				63A58C451F5E2CE100B4AA1A /* btle-scannerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63A58C2B1F5E2CE100B4AA1A /* btle-scanner */ = {
+			isa = PBXGroup;
+			children = (
+				63A58C2C1F5E2CE100B4AA1A /* AppDelegate.swift */,
+				63A58C301F5E2CE100B4AA1A /* Assets.xcassets */,
+				63A58C321F5E2CE100B4AA1A /* Main.storyboard */,
+				63A58C351F5E2CE100B4AA1A /* Info.plist */,
+			);
+			path = "btle-scanner";
+			sourceTree = "<group>";
+		};
+		63A58C3D1F5E2CE100B4AA1A /* btle-scannerTests */ = {
+			isa = PBXGroup;
+			children = (
+				63A58C3E1F5E2CE100B4AA1A /* btle_scannerTests.swift */,
+				63A58C401F5E2CE100B4AA1A /* Info.plist */,
+			);
+			path = "btle-scannerTests";
+			sourceTree = "<group>";
+		};
+		63A58C481F5E2CE100B4AA1A /* btle-scannerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63A58C491F5E2CE100B4AA1A /* btle_scannerUITests.swift */,
+				63A58C4B1F5E2CE100B4AA1A /* Info.plist */,
+			);
+			path = "btle-scannerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63A58C281F5E2CE100B4AA1A /* btle-scanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63A58C4E1F5E2CE100B4AA1A /* Build configuration list for PBXNativeTarget "btle-scanner" */;
+			buildPhases = (
+				63A58C251F5E2CE100B4AA1A /* Sources */,
+				63A58C261F5E2CE100B4AA1A /* Frameworks */,
+				63A58C271F5E2CE100B4AA1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "btle-scanner";
+			productName = "btle-scanner";
+			productReference = 63A58C291F5E2CE100B4AA1A /* btle-scanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63A58C391F5E2CE100B4AA1A /* btle-scannerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63A58C511F5E2CE100B4AA1A /* Build configuration list for PBXNativeTarget "btle-scannerTests" */;
+			buildPhases = (
+				63A58C361F5E2CE100B4AA1A /* Sources */,
+				63A58C371F5E2CE100B4AA1A /* Frameworks */,
+				63A58C381F5E2CE100B4AA1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63A58C3C1F5E2CE100B4AA1A /* PBXTargetDependency */,
+			);
+			name = "btle-scannerTests";
+			productName = "btle-scannerTests";
+			productReference = 63A58C3A1F5E2CE100B4AA1A /* btle-scannerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		63A58C441F5E2CE100B4AA1A /* btle-scannerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63A58C541F5E2CE100B4AA1A /* Build configuration list for PBXNativeTarget "btle-scannerUITests" */;
+			buildPhases = (
+				63A58C411F5E2CE100B4AA1A /* Sources */,
+				63A58C421F5E2CE100B4AA1A /* Frameworks */,
+				63A58C431F5E2CE100B4AA1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63A58C471F5E2CE100B4AA1A /* PBXTargetDependency */,
+			);
+			name = "btle-scannerUITests";
+			productName = "btle-scannerUITests";
+			productReference = 63A58C451F5E2CE100B4AA1A /* btle-scannerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63A58C211F5E2CE100B4AA1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Aaron Day";
+				TargetAttributes = {
+					63A58C281F5E2CE100B4AA1A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					63A58C391F5E2CE100B4AA1A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 63A58C281F5E2CE100B4AA1A;
+					};
+					63A58C441F5E2CE100B4AA1A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 63A58C281F5E2CE100B4AA1A;
+					};
+				};
+			};
+			buildConfigurationList = 63A58C241F5E2CE100B4AA1A /* Build configuration list for PBXProject "btle-scanner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63A58C201F5E2CE100B4AA1A;
+			productRefGroup = 63A58C2A1F5E2CE100B4AA1A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63A58C281F5E2CE100B4AA1A /* btle-scanner */,
+				63A58C391F5E2CE100B4AA1A /* btle-scannerTests */,
+				63A58C441F5E2CE100B4AA1A /* btle-scannerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63A58C271F5E2CE100B4AA1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63A58C311F5E2CE100B4AA1A /* Assets.xcassets in Resources */,
+				63A58C341F5E2CE100B4AA1A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A58C381F5E2CE100B4AA1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A58C431F5E2CE100B4AA1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63A58C251F5E2CE100B4AA1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63A58C2D1F5E2CE100B4AA1A /* AppDelegate.swift in Sources */,
+				63A9705D1F5E2D830049CFD9 /* PeripheralViewController.swift in Sources */,
+				63A9705C1F5E2D830049CFD9 /* BluetoothLEManager.swift in Sources */,
+				63A9705E1F5E2D830049CFD9 /* ScanViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A58C361F5E2CE100B4AA1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63A58C3F1F5E2CE100B4AA1A /* btle_scannerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A58C411F5E2CE100B4AA1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63A58C4A1F5E2CE100B4AA1A /* btle_scannerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63A58C3C1F5E2CE100B4AA1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63A58C281F5E2CE100B4AA1A /* btle-scanner */;
+			targetProxy = 63A58C3B1F5E2CE100B4AA1A /* PBXContainerItemProxy */;
+		};
+		63A58C471F5E2CE100B4AA1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63A58C281F5E2CE100B4AA1A /* btle-scanner */;
+			targetProxy = 63A58C461F5E2CE100B4AA1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63A58C321F5E2CE100B4AA1A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63A58C331F5E2CE100B4AA1A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63A58C4C1F5E2CE100B4AA1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		63A58C4D1F5E2CE100B4AA1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		63A58C4F1F5E2CE100B4AA1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "btle-scanner/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crazydays.btle.btle-scanner";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		63A58C501F5E2CE100B4AA1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "btle-scanner/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crazydays.btle.btle-scanner";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		63A58C521F5E2CE100B4AA1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "btle-scannerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crazydays.btle.btle-scannerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/btle-scanner.app/Contents/MacOS/btle-scanner";
+			};
+			name = Debug;
+		};
+		63A58C531F5E2CE100B4AA1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "btle-scannerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crazydays.btle.btle-scannerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/btle-scanner.app/Contents/MacOS/btle-scanner";
+			};
+			name = Release;
+		};
+		63A58C551F5E2CE100B4AA1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "btle-scannerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crazydays.btle.btle-scannerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "btle-scanner";
+			};
+			name = Debug;
+		};
+		63A58C561F5E2CE100B4AA1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "btle-scannerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crazydays.btle.btle-scannerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "btle-scanner";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63A58C241F5E2CE100B4AA1A /* Build configuration list for PBXProject "btle-scanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A58C4C1F5E2CE100B4AA1A /* Debug */,
+				63A58C4D1F5E2CE100B4AA1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63A58C4E1F5E2CE100B4AA1A /* Build configuration list for PBXNativeTarget "btle-scanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A58C4F1F5E2CE100B4AA1A /* Debug */,
+				63A58C501F5E2CE100B4AA1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63A58C511F5E2CE100B4AA1A /* Build configuration list for PBXNativeTarget "btle-scannerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A58C521F5E2CE100B4AA1A /* Debug */,
+				63A58C531F5E2CE100B4AA1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63A58C541F5E2CE100B4AA1A /* Build configuration list for PBXNativeTarget "btle-scannerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A58C551F5E2CE100B4AA1A /* Debug */,
+				63A58C561F5E2CE100B4AA1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63A58C211F5E2CE100B4AA1A /* Project object */;
+}
