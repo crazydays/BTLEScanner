@@ -46,9 +46,9 @@
 		63A58C451F5E2CE100B4AA1A /* btle-scannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btle-scannerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A58C491F5E2CE100B4AA1A /* btle_scannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btle_scannerUITests.swift; sourceTree = "<group>"; };
 		63A58C4B1F5E2CE100B4AA1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothLEManager.swift; path = "btle-scanner/BluetoothLEManager.swift"; sourceTree = "<group>"; };
-		63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeripheralViewController.swift; path = "btle-scanner/PeripheralViewController.swift"; sourceTree = "<group>"; };
-		63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanViewController.swift; path = "btle-scanner/ScanViewController.swift"; sourceTree = "<group>"; };
+		63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothLEManager.swift; sourceTree = "<group>"; };
+		63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
+		63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +79,6 @@
 		63A58C201F5E2CE100B4AA1A = {
 			isa = PBXGroup;
 			children = (
-				63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */,
-				63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */,
-				63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */,
 				63A58C2B1F5E2CE100B4AA1A /* btle-scanner */,
 				63A58C3D1F5E2CE100B4AA1A /* btle-scannerTests */,
 				63A58C481F5E2CE100B4AA1A /* btle-scannerUITests */,
@@ -103,6 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				63A58C2C1F5E2CE100B4AA1A /* AppDelegate.swift */,
+				63A9705B1F5E2D830049CFD9 /* ScanViewController.swift */,
+				63A9705A1F5E2D830049CFD9 /* PeripheralViewController.swift */,
+				63A970591F5E2D830049CFD9 /* BluetoothLEManager.swift */,
 				63A58C301F5E2CE100B4AA1A /* Assets.xcassets */,
 				63A58C321F5E2CE100B4AA1A /* Main.storyboard */,
 				63A58C351F5E2CE100B4AA1A /* Info.plist */,

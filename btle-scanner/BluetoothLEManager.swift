@@ -24,8 +24,12 @@ class BluetoothLEManager: NSObject {
     
     static let BTLE_UserInfoState = "BluetoothLE_UserInfoState"
     static let BTLE_UserInfoPeripheral = "BluetoothLE_UserInfoPeripheral"
+    static let BTLE_UserInfoService = "BluetoothLE_UserInfoService"
     static let BTLE_UserInfoRSSI = "BluetoothLE_UserInfoRSSI"
     static let BTLE_UserInfoError = "BluetoothLE_UserInfoError"
+
+    static let BTLE_Peripheral_DiscoveredServices = "BluetoothLE_Peripheral_DiscoveredServices"
+    static let BTLE_Peripheral_DiscoveredCharacteristics = "BluetoothLE_Peripheral_DiscoveredCharacteristics"
 
     var centralManager: CBCentralManager?
 
@@ -109,6 +113,9 @@ extension BluetoothLEManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("centralManager.didConnect: \(peripheral)")
 
+        peripheral.delegate = self
+        peripheral.discoverServices(nil)
+
         NotificationCenter.default.post(name: Notification.Name(BluetoothLEManager.BTLE_ConnectedPeripheral), object: self, userInfo: [BluetoothLEManager.BTLE_UserInfoPeripheral: peripheral])
     }
 
@@ -136,3 +143,22 @@ extension BluetoothLEManager: CBCentralManagerDelegate {
         NotificationCenter.default.post(name: Notification.Name(BluetoothLEManager.BTLE_DisconnectedPeripheral), object: self, userInfo: userInfo)
     }
 }
+
+extension BluetoothLEManager: CBPeripheralDelegate {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        print("peripheral:didDiscoverService: \(peripheral.services ?? [])")
+
+        NotificationCenter.default.post(name: Notification.Name(BluetoothLEManager.BTLE_Peripheral_DiscoveredServices), object: self, userInfo: [BluetoothLEManager.BTLE_UserInfoPeripheral: peripheral])
+
+        for service: CBService in peripheral.services! {
+            peripheral.discoverCharacteristics(nil, for: service)
+        }
+    }
+
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        print("peripheral:didDiscoverCharacteristicsForService:")
+
+        NotificationCenter.default.post(name: Notification.Name(BluetoothLEManager.BTLE_Peripheral_DiscoveredCharacteristics), object: self, userInfo: [BluetoothLEManager.BTLE_UserInfoPeripheral: peripheral, BluetoothLEManager.BTLE_UserInfoService: service])
+    }
+}
+
