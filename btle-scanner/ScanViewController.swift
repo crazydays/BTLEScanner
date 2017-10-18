@@ -16,22 +16,20 @@ class ScanViewController: NSViewController {
     @IBOutlet weak var detailButton: NSButton!
     @IBOutlet weak var peripheralTable: NSTableView!
 
-    var bluetoothManager: BluetoothLEManager?
-    var scanning: Bool?
-
-    var peripherals: [CBPeripheral] = []
+    var scanning = false
+    var peripherals = [CBPeripheral]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupBluetooth()
         setupScanButton()
         setupDetailButton()
         setupPeripheralTable()
-        setupBluetooth()
     }
 
     func setupScanButton() {
-        scanButton.isEnabled = false
+        scanButton.isEnabled = BluetoothLEManager.shared.enabled
         scanButton.title = "Start Scan"
     }
 
@@ -43,9 +41,9 @@ class ScanViewController: NSViewController {
         peripheralTable.delegate = self as? NSTableViewDelegate
         peripheralTable.dataSource = self
         for column in peripheralTable.tableColumns {
-            if column.identifier == "name" {
+            if column.identifier.rawValue == "name" {
                 column.headerCell.title = "Name"
-            } else if column.identifier == "identifier" {
+            } else if column.identifier.rawValue == "identifier" {
                 column.headerCell.title = "Identifier"
             }
             
@@ -53,6 +51,8 @@ class ScanViewController: NSViewController {
     }
 
     func setupBluetooth() {
+        scanning = false
+
         // hardware
         NotificationCenter.default.addObserver(self, selector: #selector(ScanViewController.bluetoothEnabled), name: Notification.Name(BluetoothLEManager.BTLE_HardwareEnabled), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ScanViewController.bluetoothDisabled), name: Notification.Name(BluetoothLEManager.BTLE_HardwareDisabled), object: nil)
@@ -63,43 +63,32 @@ class ScanViewController: NSViewController {
         
         // peripheral
         NotificationCenter.default.addObserver(self, selector: #selector(ScanViewController.bluetoothDiscoveredPeripheral), name: Notification.Name(BluetoothLEManager.BTLE_DiscoveredPeripheral), object: nil)
-
-        // reference to bluetooth manager
-        let delegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
-
-        bluetoothManager = delegate.bluetoothManager()
-        scanning = false
-    }
-    
-    override var representedObject: Any? {
-        didSet {
-        }
     }
 
-    func bluetoothEnabled(notification: Notification) {
+    @objc func bluetoothEnabled(notification: Notification) {
         scanButton.isEnabled = true
     }
 
-    func bluetoothDisabled() {
+    @objc func bluetoothDisabled() {
         scanButton.isEnabled = false
     }
 
-    func bluetoothStartScanning(notification: Notification) {
+    @objc func bluetoothStartScanning(notification: Notification) {
         scanButton.title = "Stop Scan"
         scanningIndicator.startAnimation(self)
     }
 
-    func bluetoothStopScanning(notification: Notification) {
+    @objc func bluetoothStopScanning(notification: Notification) {
         scanButton.title = "Start Scan"
         scanningIndicator.stopAnimation(self)
     }
 
-    func bluetoothDiscoveredPeripheral(notification: Notification) {
+    @objc func bluetoothDiscoveredPeripheral(notification: Notification) {
         if let peripheral: CBPeripheral = notification.userInfo?[BluetoothLEManager.BTLE_UserInfoPeripheral] as? CBPeripheral {
             if peripherals.contains(peripheral) {
-                print("Already seen peripheral: %@", peripheral)
+                // print("Already seen peripheral: \(peripheral.identifier.uuidString)")
             } else {
-                print("Adding peripheral: %@", peripheral)
+                // print("Adding peripheral: \(peripheral.identifier.uuidString)")
                 peripherals.append(peripheral)
             }
         }
@@ -109,27 +98,27 @@ class ScanViewController: NSViewController {
 
     // MARK: action
     @IBAction func toggleScan(sender: NSButton) {
-        if scanning! {
-            print("toggleScan: stopping")
+        if scanning {
+            // print("toggleScan: stopping")
             scanning = false
-            bluetoothManager?.stopScan()
+            BluetoothLEManager.shared.stopScan()
         } else {
-            print("toggleSacn: starting")
+            // print("toggleSacn: starting")
             scanning = true
-            bluetoothManager?.startScan()
+            BluetoothLEManager.shared.startScan()
         }
     }
 
     @IBAction func showDetailsOfSelectedPeripheral(sender: NSButton) {
         // turn off scanning
-        if scanning! {
+        if scanning {
             toggleScan(sender: scanButton)
         }
 
         // open / forward peripheral window
         let row: Int = peripheralTable.selectedRow
         let peripheral: CBPeripheral = peripherals[row]
-        let delegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
+        let delegate = NSApplication.shared.delegate as! AppDelegate
         let window: NSWindow = delegate.peripheralWindow(peripheral)
 
         window.makeKeyAndOrderFront(self)
@@ -146,14 +135,14 @@ extension ScanViewController: NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        print("tableView:objectValueFor:row: \(row)")
-        print("tableView:objectValueFor:row: identifier - \(tableColumn?.identifier ?? "nil")")
+        // print("tableView:objectValueFor:row: \(row)")
+        // print("tableView:objectValueFor:row: identifier - \(tableColumn?.identifier ?? "nil")")
         
-        if tableColumn?.identifier == "name" {
-            print("tableView:objectValueFor:row: name - \(peripherals[row].name ?? "nil")")
+        if tableColumn?.identifier.rawValue == "name" {
+            // print("tableView:objectValueFor:row: name - \(peripherals[row].name ?? "nil")")
             return peripherals[row].name
-        } else if tableColumn?.identifier == "identifier" {
-            print("tableView:objectValueFor:row: identifier - \(peripherals[row].identifier.uuidString)")
+        } else if tableColumn?.identifier.rawValue == "identifier" {
+            // print("tableView:objectValueFor:row: identifier - \(peripherals[row].identifier.uuidString)")
             return peripherals[row].identifier.uuidString
         } else {
             return "N/F"

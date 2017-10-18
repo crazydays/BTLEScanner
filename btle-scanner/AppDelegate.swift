@@ -12,9 +12,7 @@ import CoreBluetooth
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var windowByPeripheral: [CBPeripheral: NSWindow] = [:]
-
-    var bluetoothLEManagerInstance: BluetoothLEManager?
+    var windowByPeripheral = [CBPeripheral: NSWindow]()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     }
@@ -22,21 +20,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
     }
 
-    func bluetoothManager() -> BluetoothLEManager? {
-        if bluetoothLEManagerInstance == nil {
-            bluetoothLEManagerInstance = BluetoothLEManager()
-        }
- 
-        return bluetoothLEManagerInstance
-    }
-
     func peripheralWindow(_ peripheral: CBPeripheral) -> NSWindow {
         if let window: NSWindow = windowByPeripheral[peripheral] {
             return window
         } else {
-            let storyboard: NSStoryboard = NSStoryboard(name: "Main", bundle: nil)
+            let storyboard: NSStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
 
-            let peripheralViewController: PeripheralViewController = storyboard.instantiateController(withIdentifier: "PeripheralViewController") as! PeripheralViewController
+            let peripheralViewController: PeripheralViewController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PeripheralViewController")) as! PeripheralViewController
             peripheralViewController.peripheral = peripheral
 
             let window: NSWindow = NSWindow(contentViewController: peripheralViewController)

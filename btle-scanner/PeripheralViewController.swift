@@ -16,7 +16,6 @@ class PeripheralViewController: NSViewController {
     @IBOutlet weak var peripheralOutline: NSOutlineView!
 
     var peripheral: CBPeripheral?
-    var bluetoothManager: BluetoothLEManager?
     var connected: Bool?
 
     override func viewDidLoad() {
@@ -55,24 +54,22 @@ class PeripheralViewController: NSViewController {
         // peripheral
         NotificationCenter.default.addObserver(self, selector: #selector(PeripheralViewController.discoveredServices), name: Notification.Name(BluetoothLEManager.BTLE_Peripheral_DiscoveredServices), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(PeripheralViewController.discoveredCharacteristics), name: Notification.Name(BluetoothLEManager.BTLE_Peripheral_DiscoveredCharacteristics), object: nil)
-
-        // reference to bluetooth manager
-        let delegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
-        bluetoothManager = delegate.bluetoothManager()
+        NotificationCenter.default.addObserver(self, selector: #selector(PeripheralViewController.discoveredCharacteristicDescriptor), name: Notification.Name(BluetoothLEManager.BTLE_Peripheral_DiscoveredCharacteristicDescriptor), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PeripheralViewController.characteristicValueUpdated), name: Notification.Name(BluetoothLEManager.BTLE_Peripheral_CharacteristicUpdatedValue), object: nil)
     }
 
     @IBAction func toggleConnection(sender: NSButton) {
         connectButton.isEnabled = false
 
         if connected! {
-            bluetoothManager?.disconnect(peripheral!)
+            BluetoothLEManager.shared.disconnect(peripheral!)
         } else {
-            bluetoothManager?.connect(peripheral!)
+            BluetoothLEManager.shared.connect(peripheral!)
         }
     }
 
-    func connectedPeripheral(notification: Notification) {
-        print("connectedPeripheral:")
+    @objc func connectedPeripheral(notification: Notification) {
+        // print("connectedPeripheral:")
         if isPeripheral(notification) {
             connected = true
             connectButton.isEnabled = true
@@ -80,8 +77,8 @@ class PeripheralViewController: NSViewController {
         }
     }
 
-    func failedToConnectPeripheral(notification: Notification) {
-        print("failedToConnectPeripheral:")
+    @objc func failedToConnectPeripheral(notification: Notification) {
+        // print("failedToConnectPeripheral:")
         if isPeripheral(notification) {
             connected = false
             connectButton.isEnabled = true
@@ -89,8 +86,8 @@ class PeripheralViewController: NSViewController {
         }
     }
 
-    func disconnectedPeripheral(notification: Notification) {
-        print("disconnectedPeripheral:")
+    @objc func disconnectedPeripheral(notification: Notification) {
+        // print("disconnectedPeripheral:")
         if isPeripheral(notification) {
             connected = false
             connectButton.isEnabled = true
@@ -98,37 +95,52 @@ class PeripheralViewController: NSViewController {
         }
     }
 
-    func discoveredServices(notification: Notification) {
-        print("discoveredServices:")
+    @objc func discoveredServices(notification: Notification) {
+        // print("discoveredServices:")
         if isPeripheral(notification) {
             peripheralOutline.reloadData()
         }
     }
 
-    func discoveredCharacteristics(notification: Notification) {
-        print("discoveredCharacteristics:")
+    @objc func discoveredCharacteristics(notification: Notification) {
+        // print("discoveredCharacteristics:")
         if isPeripheral(notification) {
-            let service: CBService = notification.userInfo![BluetoothLEManager.BTLE_UserInfoService] as! CBService
+            let service = notification.userInfo![BluetoothLEManager.BTLE_UserInfoService] as! CBService
             peripheralOutline.reloadItem(service)
         }
     }
 
+    @objc func discoveredCharacteristicDescriptor(notification: Notification) {
+        // print("discoveredCharacteristicDescriptor:")
+        if isPeripheral(notification) {
+            let characteristic = notification.userInfo?[BluetoothLEManager.BTLE_UserInfoCharacteristic] as! CBCharacteristic
+            peripheralOutline.reloadItem(characteristic)
+        }
+    }
+
+    @objc func characteristicValueUpdated(notification: Notification) {
+        // print("characteristicValueUpdated:")
+        if isPeripheral(notification) {
+            let characteristic = notification.userInfo?[BluetoothLEManager.BTLE_UserInfoCharacteristic] as! CBCharacteristic
+            peripheralOutline.reloadItem(characteristic)
+        }
+    }
+
     func isPeripheral(_ notification: Notification) -> Bool {
-        if let notificationPeripheral: CBPeripheral = notification.userInfo?[BluetoothLEManager.BTLE_UserInfoPeripheral] as? CBPeripheral {
-            return peripheral == notificationPeripheral
-        } else {
+        guard let notificationPeripheral = notification.userInfo?[BluetoothLEManager.BTLE_UserInfoPeripheral] as? CBPeripheral else {
             return false
         }
+        return peripheral == notificationPeripheral
     }
 }
 
 // MARK: NSOutlineViewDataSource
 extension PeripheralViewController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        print("outlineView:numberOfChildernOfItem: \(item ?? "nil")")
+        // print("outlineView:numberOfChildernOfItem: \(item ?? "nil")")
         if item == nil {
             return peripheral?.services?.count ?? 0
-        } else if let service: CBService = item as? CBService {
+        } else if let service = item as? CBService {
             return service.characteristics?.count ?? 0
         } else {
             return 0
@@ -136,10 +148,10 @@ extension PeripheralViewController: NSOutlineViewDataSource {
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        print("outlineView:childIndex:OfItem: \(index), \(item ?? "nil")")
+        // print("outlineView:childIndex:OfItem: \(index), \(item ?? "nil")")
         if item == nil {
             return (peripheral?.services?[index])!
-        } else if let service: CBService = item as? CBService {
+        } else if let service = item as? CBService {
             return service.characteristics![index]
         } else {
             return 0
@@ -147,8 +159,8 @@ extension PeripheralViewController: NSOutlineViewDataSource {
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        print("outlineView:isItemExpandable: \(item)")
-        if let service: CBService = item as? CBService {
+        // print("outlineView:isItemExpandable: \(item)")
+        if let service = item as? CBService {
             return service.characteristics?.count ?? 0 > 0
         } else {
             return false
@@ -156,16 +168,16 @@ extension PeripheralViewController: NSOutlineViewDataSource {
     }
 
     func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
-        print("outlineView:objectValueForTableColumn:byItem:")
-        if tableColumn?.identifier == "name" {
-            if let service: CBService = item as? CBService {
+        // print("outlineView:objectValueForTableColumn:byItem: \(tableColumn?.identifier ?? "unknown") \(item ?? "nil")")
+        if tableColumn?.identifier.rawValue == "name" {
+            if let service = item as? CBService {
                 return service.uuid.uuidString
-            } else if let characteristic: CBCharacteristic = item as? CBCharacteristic {
+            } else if let characteristic = item as? CBCharacteristic {
                 return characteristic.uuid.uuidString
             }
-        } else if tableColumn?.identifier == "value" {
-            if let _: CBCharacteristic = item as? CBCharacteristic {
-                return "Value"
+        } else if tableColumn?.identifier.rawValue == "value" {
+            if let characteristic = item as? CBCharacteristic {
+                return characteristic.value?.reduce("") { s, b in s?.appendingFormat("%02x", b) }
             }
         }
 
